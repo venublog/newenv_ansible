@@ -1,0 +1,37 @@
+---
+# tasks file for tf_init
+- name: tf_init
+  git: 
+    repo: https://github.com/tfutils/tfenv.git 
+    dest: ~/.tfenv
+
+- name: Adding the path in the bashrc files
+  lineinfile: 
+    dest: "/root/.bash_profile"
+    line: 'export PATH="$HOME/.tfenv/bin:$PATH"'
+    insertafter: 'EOF'  
+    state: present
+ 
+- name: export config
+  shell: "source /root/.bash_profile"
+
+#- name: sym link
+#  file: 
+#    src: /root/.tfenv/bin/{{ item }}
+#    dest: /usr/local/bin/
+#    #owner: root
+#    #group: root
+#    #mode: 0755
+#    #recurse: yes
+#    #force: yes
+#    state: link
+#  with_items: 
+#    - tfenv 
+#    - terraform
+- name: link binary
+  shell: "ln -s ~/.tfenv/bin/* /usr/local/bin"
+  ignore_errors: yes
+
+- name: tf env 
+  shell: "tfenv install 0.13"
+  
