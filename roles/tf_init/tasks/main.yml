@@ -5,8 +5,15 @@
     repo: https://github.com/tfutils/tfenv.git 
     dest: ~/.tfenv
 
+- name: Adding the path in the bashrc files
+    lineinfile: 
+      dest: "/root/.bash_profile"
+      line: 'export PATH="$HOME/.tfenv/bin:$PATH"'
+      insertafter: 'EOF'  
+      state: present
+ 
 - name: export config
-  shell: "echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile"
+  shell: "source /root/.bash_profile"
 
 - name: sym link
   file: 
