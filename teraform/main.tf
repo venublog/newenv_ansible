@@ -1,7 +1,7 @@
 provider "aws" {
 
-  version = "1.5.0"
-  region = "us-east-2"
+  version = "3.67.0"
+  region = "us-east-1"
   profile = "acloud"
 }
 
@@ -86,7 +86,7 @@ resource "aws_security_group" "sg_ec2node" {
 #----- EC2 instance for application-----
 
 resource "aws_instance" "ec2node" {
-  count                = "var.count"
+  count                = var.ec2node_count
   ami                  = "var.application_ami"
   key_name             = "var.keypair_id"
   instance_type        = "var.ec2node_instance_type"
@@ -97,7 +97,7 @@ resource "aws_instance" "ec2node" {
     create_before_destroy = true
     ignore_changes        = ["user_data"]
   }
- tags {
+ tags = {
     Name = "acloud_guru_application"
   }
 }

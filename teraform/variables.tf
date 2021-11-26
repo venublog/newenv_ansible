@@ -11,6 +11,5 @@ variable "keypair_id" {
 variable "ec2node_instance_type" {
   
 }
-variable "count" {
-  
+variable "ec2node_count" { 
 }
