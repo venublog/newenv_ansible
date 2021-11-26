@@ -3,3 +3,4 @@
   become: yes
   roles:
     - cloud-init
+    - tf_init
