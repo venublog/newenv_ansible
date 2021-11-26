@@ -11,7 +11,7 @@
     ansible_distribution == 'Amazon'
   #yum: name={{ item }} state=latest
   yum: 
-    name: ['awscli.noarch', 'fail2ban', '"@Development tools"']
+    name: ['awscli.noarch', 'fail2ban', '@Development tools']
     state: latest
   become: yes
   #with_items:
