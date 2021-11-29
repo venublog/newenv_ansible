@@ -5,7 +5,10 @@ provider "aws" {
   profile = "acloud"
 }
 
-
+resource "aws_key_pair" "site_key" {
+  key_name   = "${var.key_name}"
+  public_key = "${file(var.public_key)}"
+}
 
 resource "aws_security_group" "sg_ec2node" {
   name        = "ec2node-sg"
