@@ -11,7 +11,7 @@ resource "aws_key_pair" "site_key" {
 }
 
 resource "aws_security_group" "sg_ec2node" {
-  name        = "ec2node-sg"
+  name        = "ec2node-sg--${var.vpc_id}"
   description = "Used for access to the dev instance."
   vpc_id      = var.vpc_id
 
