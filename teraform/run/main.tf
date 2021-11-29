@@ -6,21 +6,21 @@ provider "aws" {
 }
 
 module "keypair" {
-  source     = "../modules/keypair"
+  source     = "../module/keypair"
   key_name   = var.key_name
   public_key = var.public_key
   
 }
 
 module "securitygroup" {
-  source     = "../modules/securitygroup"
+  source     = "../module/securitygroup"
   vpc_id   =  var.vpc_id
     
 }
 
 module "ec2node" {
 
-    source = "../modules/ec2node"
+    source = "../module/ec2node"
     ec2node_count = var.ec2node_count
     application_ami = var.application_ami
     new_keypair_id = module.keypair.new_keypair_id 
