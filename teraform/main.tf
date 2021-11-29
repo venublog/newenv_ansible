@@ -10,7 +10,7 @@ provider "aws" {
 resource "aws_security_group" "sg_ec2node" {
   name        = "ec2node-sg"
   description = "Used for access to the dev instance."
-  vpc_id      = "var.vpc_id"
+  vpc_id      = var.vpc_id
 
   #ec2 node
 
@@ -87,9 +87,9 @@ resource "aws_security_group" "sg_ec2node" {
 
 resource "aws_instance" "ec2node" {
   count                = var.ec2node_count
-  ami                  = "var.application_ami"
-  key_name             = "var.keypair_id"
-  instance_type        = "var.ec2node_instance_type"
+  ami                  = var.application_ami
+  key_name             = var.keypair_id
+  instance_type        = var.ec2node_instance_type
   vpc_security_group_ids = ["${aws_security_group.sg_ec2node.id}"]
  
  
@@ -98,6 +98,6 @@ resource "aws_instance" "ec2node" {
     ignore_changes        = ["user_data"]
   }
  tags = {
-    Name = "acloud_guru_application"
+    Name = "acloud_guru_application-${count.index+1}"
   }
 }
