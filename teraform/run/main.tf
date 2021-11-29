@@ -13,7 +13,7 @@ module "keypair" {
 }
 
 module "securitygroup" {
-  source     = "../module/securitygroup"
+  source     = "../module/secuiritygroup"
   vpc_id   =  var.vpc_id
     
 }
