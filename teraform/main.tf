@@ -18,62 +18,57 @@ resource "aws_security_group" "sg_ec2node" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/8", "144.70.0.0/16"]
+    cidr_blocks = ["172.0.0.0/8"]
   }
   ingress {
     from_port   = 9390
     to_port     = 9390
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/8", "144.70.0.0/16"]
+    cidr_blocks = ["172.0.0.0/8"]
   }
   ingress {
     from_port   = 5701
     to_port     = 5701
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/8", "144.70.0.0/16"]
+    cidr_blocks = ["172.0.0.0/8"]
   }
   ingress {
     from_port   = 3060
     to_port     = 3060
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/8", "144.70.0.0/16"]
+    cidr_blocks = ["172.0.0.0/8"]
   }
   ingress {
     from_port   = 9300
     to_port     = 9400
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/8", "144.70.0.0/16"]
+    cidr_blocks = ["172.0.0.0/8"]
   }    
   ingress {
     from_port   = 9250
     to_port     = 9250
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/8", "144.70.0.0/16"]
+    cidr_blocks = ["172.0.0.0/8"]
   }   
   ingress {
     from_port   = 9200
     to_port     = 9200
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/8", "144.70.0.0/16"]
+    cidr_blocks = ["172.0.0.0/8"]
   }
 
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/8"]
+    cidr_blocks = ["172.0.0.0/8"]
   }
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["144.70.0.0/16"]
-  }
+  
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/8"]
+    cidr_blocks = ["172.0.0.0/8"]
   }
   egress {
     from_port   = 0
